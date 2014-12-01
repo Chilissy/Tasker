@@ -11,13 +11,13 @@ public class Calendar {
             if (t.equals(task)){
                 return true;
             }
+
         }
         return false;
     }
 
-    public boolean datesOverlap(){
-
-        return false;
+    public ArrayList<Task> getTasks() {
+        return tasks;
     }
 
 }
