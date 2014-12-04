@@ -14,14 +14,15 @@ public class Task {
         TaskService service = new TaskService();
 
         if(!service.canCreateTask(start, end, calendar)){
-
+            System.err.println("Cannot create task, dates overlap!");
+            return;
         }
-
 
         this.startDate = start;
         this.endDate = end;
         this.desc = desc;
 
+        calendar.addTask(this);
     }
 
     public Date getEndDate() {
@@ -32,5 +33,9 @@ public class Task {
         return startDate;
     }
 
+    @Override
+    public String toString() {
+        return "### " + desc + " | " +  startDate + " | " + endDate + " ###";
 
+    }
 }
