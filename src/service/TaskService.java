@@ -27,4 +27,15 @@ public class TaskService {
         }
         return true;
     }
+
+    public static boolean isTaskToday(Task task, Date today) {
+
+        Date taskDate = task.getStartDate();
+        if (taskDate.getDay() == today.getDay()) {
+            return true;
+        }
+        return false;
+    }
+
+
 }
