@@ -5,7 +5,6 @@ import main.Task;
 import service.TaskService;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CommandUI {
 
@@ -22,18 +21,16 @@ public class CommandUI {
     private void displayMenu() {
         System.out.println("This is tasker!");
         System.out.println("Review for today :");
-        displayRewiew();
+        displayReview();
 
     }
 
-    private void displayRewiew() {
-
-        Date today = new Date();
+    private void displayReview() {
 
         ArrayList<Task> tasks = calendar.getTasks();
 
         for (Task t : tasks) {
-            if (TaskService.isTaskToday(t, today)) {
+            if (TaskService.isTaskToday(t)) {
                 System.out.println(t.toString());
             }
         }

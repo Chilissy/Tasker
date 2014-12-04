@@ -2,7 +2,7 @@ package main;
 
 import ui.CommandUI;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Test {
     /* TODO:
@@ -13,16 +13,13 @@ public class Test {
 
         Calendar calendar = new Calendar();
 
-        Date start = new Date(2014, 3, 12);
-
-        Date end = new Date(2014, 3, 14);
+        LocalDate start = LocalDate.of(2014, 03, 22);
+        LocalDate end = LocalDate.of(2014, 03, 23);
         Task a = new Task(start, end, "blabla", calendar);
 
-        System.out.println(a.toString());
 
-        Task b = new Task(new Date(), new Date(2014, 12, 04, 23, 10), "dfsa", calendar);
-
-
+        Task b = new Task(LocalDate.now(), LocalDate.of(2014, 12, 5), "dfsa", calendar);
+        //System.out.println(b.getStartDate().getDay());
 
         for(Task t : calendar.getTasks()){
             System.out.println(t.toString());
@@ -31,6 +28,7 @@ public class Test {
         System.out.println("================================");
 
         CommandUI ui = new CommandUI(calendar);
+
 
     }
 }

@@ -3,20 +3,20 @@ package service;
 import main.Calendar;
 import main.Task;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class TaskService {
 
-    public static boolean datesOverlapInTasks(Date start1, Date end1, Task task2){
+    public static boolean datesOverlapInTasks(LocalDate start, LocalDate end, Task task2) {
 
-        Date start2 = task2.getStartDate();
-        Date end2 = task2.getEndDate();
+        LocalDate start2 = task2.getStartDate();
+        LocalDate end2 = task2.getEndDate();
 
-        return start1.before(end2) && start2.before(end1);
+        return start.isBefore(start2) && end.isAfter(end2);
     }
 
-    public boolean canCreateTask(Date start, Date end, Calendar calendar) {
+    public boolean canCreateTask(LocalDate start, LocalDate end, Calendar calendar) {
 
         ArrayList<Task> tasks = calendar.getTasks();
 
@@ -28,10 +28,11 @@ public class TaskService {
         return true;
     }
 
-    public static boolean isTaskToday(Task task, Date today) {
+    public static boolean isTaskToday(Task task) {
 
-        Date taskDate = task.getStartDate();
-        if (taskDate.getDay() == today.getDay()) {
+        LocalDate start = task.getStartDate();
+
+        if (start.getDayOfMonth() == LocalDate.now().getDayOfMonth()) {
             return true;
         }
         return false;

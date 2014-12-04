@@ -2,14 +2,14 @@ package main;
 
 import service.TaskService;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Task {
-    Date startDate;
-    Date endDate;
+    LocalDate startDate;
+    LocalDate endDate;
     String desc;
 
-    public Task(Date start, Date end, String desc, Calendar calendar){
+    public Task(LocalDate start, LocalDate end, String desc, Calendar calendar) {
 
         TaskService service = new TaskService();
 
@@ -25,11 +25,11 @@ public class Task {
         calendar.addTask(this);
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
